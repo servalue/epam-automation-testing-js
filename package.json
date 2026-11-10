@@ -1,0 +1,14 @@
+{
+  "name": "epam-automation-testing",
+  "version": "1.0.0",
+  "description": "JavaScript automated testing project",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Test framework is not configured yet\""
+  },
+  "keywords": [],
+  "author": "Sergei_Novikov",
+  "license": "ISC",
+  "type": "commonjs"
+}
