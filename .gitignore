@@ -13,3 +13,4 @@ videos/
 .DS_Store
 .idea/
 .vscode/
+mochawesome-report/
