@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha \"test/**/*.test.js\"",
-    "coverage": "c8 --all --include=src/**/*.js --check-coverage --lines 100 --branches 100 --functions 100 --statements 100 npm test",
+    "coverage": "c8 --all --include=src/**/*.js --reporter=text --reporter=html --check-coverage --lines=100 --branches=100 --functions=100 --statements=100 npm test",
     "lint": "eslint ."
   },
   "keywords": [],

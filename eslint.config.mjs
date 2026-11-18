@@ -41,6 +41,10 @@ export default [
       'prefer-arrow-callback': 'off',
       'func-names': 'off',
       '@stylistic/object-curly-newline': 'off',
+      // conflict with eslint-config-airbnb-extended - Require .js extensions for Node.js ES Modules
+      'import-x/extensions': ['error', 'ignorePackages', {
+        js: 'always',
+      }],
     },
   },
 ];
