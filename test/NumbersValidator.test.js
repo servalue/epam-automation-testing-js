@@ -97,4 +97,57 @@ describe('NumbersValidator', function () {
         .to.throw(Error, '[123] is not an array of "Numbers"');
     });
   });
+  describe('isAllNumbers()', function () {
+    it('should return true when all elements are numbers', function () {
+      const result = validator.isAllNumbers([1, 2, 3]);
+
+      expect(result).to.equal(true);
+    });
+
+    it('should return true for negative numbers', function () {
+      const result = validator.isAllNumbers([-1, -2]);
+
+      expect(result).to.equal(true);
+    });
+
+    it('should return true for decimal numbers', function () {
+      const result = validator.isAllNumbers([1.5, 2.7]);
+
+      expect(result).to.equal(true);
+    });
+
+    it('should return false when an array contains a string', function () {
+      const result = validator.isAllNumbers([1, '2', 3]);
+
+      expect(result).to.equal(false);
+    });
+
+    it('should return true for an empty array', function () {
+      const result = validator.isAllNumbers([]);
+
+      expect(result).to.equal(true);
+    });
+
+    it('should return true for NaN', function () {
+      const result = validator.isAllNumbers([NaN]);
+
+      expect(result).to.equal(true);
+    });
+
+    it('should return false for a nested array', function () {
+      const result = validator.isAllNumbers([1, [2]]);
+
+      expect(result).to.equal(false);
+    });
+
+    it('should reject null', function () {
+      expect(() => validator.isAllNumbers(null))
+        .to.throw(Error);
+    });
+
+    it('should throw the correct error for a string argument', function () {
+      expect(() => validator.isAllNumbers('123'))
+        .to.throw(Error, '[123] is not an array');
+    });
+  });
 });
