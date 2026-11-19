@@ -5,10 +5,22 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Test framework is not configured yet\""
+    "test": "mocha \"test/**/*.test.js\"",
+    "coverage": "c8 --all --include=src/**/*.js --reporter=text --reporter=html --check-coverage --lines=100 --branches=100 --functions=100 --statements=100 npm test",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "Sergei_Novikov",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "module",
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "c8": "^12.0.0",
+    "chai": "^6.3.0",
+    "eslint": "^9.39.5",
+    "eslint-config-airbnb-extended": "^3.3.0",
+    "globals": "^17.14.0",
+    "mocha": "^12.0.3",
+    "mochawesome": "^8.1.1"
+  }
 }
