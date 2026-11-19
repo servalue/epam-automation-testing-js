@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import NumbersValidator from '../src/NumbersValidator.js';
 
 describe('NumbersValidator', function () {
-  const validator = new NumbersValidator();
+  const validator = new NumbersValidator(); // Create an instance of NumbersValidator
 
   describe('isNumberEven', function () {
     it('should return true for an even number', function () {
@@ -41,6 +41,7 @@ describe('NumbersValidator', function () {
         .to.throw(Error, '[4] is not of type "Number" it is of type "string"');
     });
   });
+
   describe('getEvenNumbersFromArray()', function () {
     it('should return even numbers from a mixed array', function () {
       const result = validator.getEvenNumbersFromArray([1, 2, 3, 4]);
@@ -88,10 +89,12 @@ describe('NumbersValidator', function () {
       expect(() => validator.getEvenNumbersFromArray(null))
         .to.throw(Error);
     });
+
     it('should throw the correct error for a non-number element', function () {
       expect(() => validator.getEvenNumbersFromArray([1, '2']))
         .to.throw(Error, '[1,2] is not an array of "Numbers"');
     });
+
     it('should throw the correct error when the argument is not an array', function () {
       expect(() => validator.getEvenNumbersFromArray('123'))
         .to.throw(Error, '[123] is not an array of "Numbers"');
@@ -148,6 +151,47 @@ describe('NumbersValidator', function () {
     it('should throw the correct error for a string argument', function () {
       expect(() => validator.isAllNumbers('123'))
         .to.throw(Error, '[123] is not an array');
+    });
+  });
+  describe('isInteger()', function () {
+    it('should return true for an integer', function () {
+      const result = validator.isInteger(5);
+
+      expect(result).to.equal(true);
+    });
+
+    it('should return true for a negative integer', function () {
+      const result = validator.isInteger(-10);
+
+      expect(result).to.equal(true);
+    });
+
+    it('should return false for a decimal number', function () {
+      const result = validator.isInteger(5.5);
+
+      expect(result).to.equal(false);
+    });
+
+    it('should return true for zero', function () {
+      const result = validator.isInteger(0);
+
+      expect(result).to.equal(true);
+    });
+
+    it('should return false for NaN', function () {
+      const result = validator.isInteger(NaN);
+
+      expect(result).to.equal(false);
+    });
+
+    it('should reject null', function () {
+      expect(() => validator.isInteger(null))
+        .to.throw(Error);
+    });
+
+    it('should throw the correct error for a string', function () {
+      expect(() => validator.isInteger('5'))
+        .to.throw(Error, '[5] is not a number');
     });
   });
 });
